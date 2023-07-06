@@ -13,40 +13,61 @@ var header = new InvoiceHeader
     Title = "Zamzong Wide Screen Monitor 32 inch"
 };
 
-// Aşağıdaki if kullanımını terk etmek istiyorum
-if (partyID.SchemaName == ContextConstants.IdentityType.CitizenNumber)
+// // Aşağıdaki if kullanımını terk etmek istiyorum
+// if (partyID.SchemaName == ContextConstants.IdentityType.CitizenNumber)
+// {
+//     header.SupplierCitizenNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.TaxNumber)
+// {
+//     header.SupplierTaxNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.CustomerNumber)
+// {
+//     header.SupplierCustomerNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.PhoneNumber)
+// {
+//     header.SupplierPhoneNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.BranchNumber)
+// {
+//     header.SupplierBranchNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.SubscriberNo)
+// {
+//     header.SupplierTaxNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.PassaportNumber)
+// {
+//     header.SupplierPassportNumber = partyID.Value;
+// }
+// if (partyID.SchemaName == ContextConstants.IdentityType.FileNumber)
+// {
+//     header.SupplierFileNumber = partyID.Value;
+// }
+// Console.WriteLine($"Header Supplier Tax Number Value {header.SupplierTaxNumber}");
+
+// Yeni düzene göre if blokları olmadan aynı sonuca ulaşmak için aşağıdaki kod parçasını kullanabiliriz
+var propMap = new Dictionary<string, string>(){
+        { ContextConstants.IdentityType.CitizenNumber, "SupplierCitizenNumber" },
+        { ContextConstants.IdentityType.TaxNumber, "SupplierTaxNumber"},
+        { ContextConstants.IdentityType.CustomerNumber, "SupplierCustomerNumber"},
+        { ContextConstants.IdentityType.PhoneNumber, "SupplierPhoneNumber"},
+        { ContextConstants.IdentityType.BranchNumber, "SupplierBranchNumber"},
+        { ContextConstants.IdentityType.SubscriberNo, "SupplierSubscriberNo"},
+        { ContextConstants.IdentityType.PassaportNumber, "SupplierPassportNumber"},
+        { ContextConstants.IdentityType.FileNumber, "SupplierFileNumber"},
+    };
+
+var propertyName = propMap[partyID.SchemaName];
+var property = header.GetType().GetProperty(propertyName);
+if (property != null)
 {
-    header.SupplierCitizenNumber = partyID.Value;
+    property.SetValue(header, partyID.Value);
+    var pValue = property.GetValue(header, null);
+    Console.WriteLine($"Property Name {property.Name}\nProperty Value {pValue}");
 }
-if (partyID.SchemaName == ContextConstants.IdentityType.TaxNumber)
-{
-    header.SupplierTaxNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.CustomerNumber)
-{
-    header.SupplierCustomerNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.PhoneNumber)
-{
-    header.SupplierPhoneNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.BranchNumber)
-{
-    header.SupplierBranchNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.SubscriberNo)
-{
-    header.SupplierTaxNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.PassaportNumber)
-{
-    header.SupplierPassportNumber = partyID.Value;
-}
-if (partyID.SchemaName == ContextConstants.IdentityType.FileNumber)
-{
-    header.SupplierFileNumber = partyID.Value;
-}
-Console.WriteLine($"Header Supplier Tax Number Value {header.SupplierTaxNumber}");
 
 namespace InternalDomain
 {
