@@ -1,5 +1,5 @@
 use std::path::{Path, PathBuf};
-use std::{env, fs};
+use std::{env, fs, thread};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -11,8 +11,17 @@ fn main() {
     let project_folder = PathBuf::from(&args[1]);
     if project_folder.exists() {
         let files = get_files(&project_folder);
-        for f in files {
-            println!("{}", f.file_name().unwrap().to_string_lossy());
+        let handles: Vec<_> = files
+            .into_iter()
+            .map(|file| {
+                thread::spawn(move || {
+                    println!("{} işlenecek", &file.file_name().unwrap().to_string_lossy())
+                })
+            })
+            .collect();
+
+        for handle in handles {
+            handle.join().unwrap();
         }
     } else {
         println!("'{}'. Bu path geçerli değil.", &args[1]);
