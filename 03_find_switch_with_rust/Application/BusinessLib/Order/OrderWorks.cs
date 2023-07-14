@@ -1,3 +1,5 @@
+using BusinessLib.Constant;
+
 namespace BusinessLib.Order;
 
 public class DeliverWorks
@@ -35,20 +37,4 @@ public class DeliverWorks
         }
         return cost;
     }
-}
-
-public enum Weight
-{
-    Small,
-    Medium,
-    Large,
-    Xlarge,
-    XXlarge,
-    Heavy
-}
-public enum TargetRegion
-{
-    International,
-    InCity,
-    InCountry
 }

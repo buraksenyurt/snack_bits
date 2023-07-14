@@ -1,11 +1,14 @@
-﻿namespace BusinessLib.Sales;
+﻿using BusinessLib.Constant;
+using BusinessLib.Data;
+
+namespace BusinessLib.Sales;
 
 public class SalesWorks
 {
-    public decimal FindDiscount(int customerId, CustomerType customerType)
+    public decimal FindDiscount(Customer customer)
     {
         decimal discount = 1.1M;
-        switch (customerType)
+        switch (customer.CustomerType)
         {
             case CustomerType.Standard:
                 discount = 2.5M;
@@ -28,14 +31,4 @@ public class SalesWorks
         }
         return discount;
     }
-}
-
-public enum CustomerType
-{
-    Standard,
-    Gold,
-    Platinium,
-    Veteran,
-    YouthPlus,
-    Student
 }

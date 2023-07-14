@@ -41,25 +41,10 @@ fn get_files(dir: &PathBuf) -> Vec<PathBuf> {
 }
 
 fn check_file_name(path: &Path) -> bool {
-    if path
-        .file_name()
-        .unwrap()
-        .to_string_lossy()
-        .contains("AssemblyInfo")
-        || path
-            .file_name()
-            .unwrap()
-            .to_string_lossy()
-            .contains("AssemblyAttributes")
-        || path
-            .file_name()
-            .unwrap()
-            .to_string_lossy()
-            .contains("GlobalUsings")
-    {
-        return false;
-    }
-    true
+    let dont_look_files = vec!["AssemblyInfo", "AssemblyAttributes", "GlobalUsings"];
+    !dont_look_files
+        .iter()
+        .any(|&name| path.file_name().unwrap().to_string_lossy().contains(name))
 }
 
 #[cfg(test)]
@@ -71,17 +56,48 @@ mod test {
     fn should_get_files_works_test() {
         let project_folder = PathBuf::from(r"../BusinessLib");
         let files = get_files(&project_folder);
-        assert_eq!(files.len(), 2);
-        assert_eq!(files[0].file_name().unwrap(), "SalesWorks.cs");
-        // assert_eq!(
-        //     files[1].file_name().unwrap(),
-        //     ".NETCoreApp,Version=v7.0.AssemblyAttributes.cs"
-        // );
-        // assert_eq!(files[2].file_name().unwrap(), "BusinessLib.AssemblyInfo.cs");
-        // assert_eq!(
-        //     files[3].file_name().unwrap(),
-        //     "BusinessLib.GlobalUsings.g.cs"
-        // );
-        assert_eq!(files[1].file_name().unwrap(), "OrderWorks.cs");
+        assert_eq!(files.len(), 6);
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "OrderWorks.cs" })
+                .count(),
+            1
+        );
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "SalesWorks.cs" })
+                .count(),
+            1
+        );
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "Customer.cs" })
+                .count(),
+            1
+        );
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "TargetRegion.cs" })
+                .count(),
+            1
+        );
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "Weight.cs" })
+                .count(),
+            1
+        );
+        assert_eq!(
+            files
+                .iter()
+                .filter(|&name| { name.file_name().unwrap().to_string_lossy() == "CustomerType.cs" })
+                .count(),
+            1
+        );
     }
 }
