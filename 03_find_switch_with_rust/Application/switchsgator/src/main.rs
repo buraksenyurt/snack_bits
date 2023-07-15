@@ -14,13 +14,13 @@ fn main() {
         let handles: Vec<_> = files
             .into_iter()
             .map(|file| {
-                // thread::spawn(move || {
+                thread::spawn(move || {
                     println!("{} işlenecek", &file.file_name().unwrap().to_string_lossy());
                     match fs::read_to_string(file) {
                         Ok(content) => {
-                            let blocks = scan_switch_case(&content, false);
+                            let blocks = scan_switch_case(&content);
                             for block in blocks {
-                                println!("\n{}\n{}", block.name,block.content);
+                                println!("{}\n{}", block.name, block.content);
                             }
                         }
                         Err(e) => {
@@ -28,13 +28,13 @@ fn main() {
                             return;
                         }
                     };
-                // })
+                })
             })
             .collect();
 
-        // for handle in handles {
-        //     handle.join().unwrap();
-        // }
+        for handle in handles {
+            handle.join().unwrap();
+        }
     } else {
         println!("'{}'. Bu path geçerli değil.", &args[1]);
     }
@@ -68,62 +68,61 @@ fn check_file_name(path: &Path) -> bool {
         .any(|&name| path.file_name().unwrap().to_string_lossy().contains(name))
 }
 
-fn scan_switch_case(content: &str, use_default: bool) -> Vec<Case> {
-    let mut blocks = Vec::new();
+fn scan_switch_case(content: &str) -> Vec<Case> {
+    let mut result = Vec::new();
+
     let mut in_switch = false;
-    let mut in_default = false;
-    let mut expression = String::new();
-    let mut current_statement = String::new();
-    let mut case: Case = Case {
-        name: "".to_string(),
-        content: "".to_string(),
-    };
+    let mut in_case = false;
+    let mut case_line = String::new();
+    let mut case_block = String::new();
 
     for line in content.lines() {
-        if line.contains("switch") {
+        if line.contains(SWITCH_EXPRESSION) {
             in_switch = true;
-        } else if in_switch && !in_default {
-            if let Some(case_start) = line.find("case") {
-                let case_line = &line[case_start + 4..];
-                let trimmed_line = case_line.trim_start();
-
-                if let Some(end_index) = trimmed_line.find(':') {
-                    expression.push_str(&trimmed_line[..end_index]);
-                    case.name = expression.clone();
-                    //blocks.push(expression.clone());
-                    expression.clear();
-                }
-            } else if line.contains("break;") {
-                if !current_statement.is_empty() {
-                    case.content = current_statement.trim().to_string();
-                    blocks.push(case.clone());
-                    current_statement.clear();
-                }
-            } else if !line.trim().is_empty() {
-                current_statement.push_str(line);
-                current_statement.push('\n');
-            }
+            continue;
         }
 
-        if line.contains("default:") {
-            in_default = true;
-            if use_default {
-                case.name = "default".to_string();
-                //blocks.push("default".to_string());
-            }
-        }
+        if in_switch {
+            if line.contains(CASE_EXPRESSION) {
+                in_case = true;
 
-        if in_default && line.contains(':') {
-            in_default = false;
+                if !case_line.is_empty() {
+                    result.push(Case {
+                        name: case_line
+                            .trim_start_matches(CASE_EXPRESSION)
+                            .trim()
+                            .to_string(),
+                        content: case_block.clone(),
+                    });
+                    case_block.clear();
+                }
+
+                let case_line_parts: Vec<&str> = line.trim().splitn(2, COLON_EXPRESSION).collect();
+                if let Some(name) = case_line_parts.get(0) {
+                    case_line = name.to_string();
+                }
+            } else if in_case {
+                if line.trim() == BREAK_EXPRESSION {
+                    in_case = false;
+                } else {
+                    case_block.push_str(line);
+                    case_block.push('\n');
+                }
+            }
         }
     }
 
-    if !current_statement.is_empty() {
-        case.content = current_statement.trim().to_string();
-        blocks.push(case);
+    if !case_line.is_empty() {
+        result.push(Case {
+            name: case_line
+                .trim_start_matches(CASE_EXPRESSION)
+                .trim()
+                .to_string(),
+            content: case_block.clone(),
+        });
     }
 
-    blocks
+    result
 }
 
 #[derive(Clone)]
@@ -131,6 +130,11 @@ pub struct Case {
     pub name: String,
     pub content: String,
 }
+
+pub const SWITCH_EXPRESSION: &str = "switch";
+pub const CASE_EXPRESSION: &str = "case";
+pub const BREAK_EXPRESSION: &str = "break;";
+pub const COLON_EXPRESSION: &str = ":";
 
 #[cfg(test)]
 mod test {
@@ -156,11 +160,8 @@ mod test {
                     break;
             }
         "#;
-        let blocks = scan_switch_case(code_block, false);
+        let blocks = scan_switch_case(code_block);
         assert_eq!(blocks.len(), 3);
-
-        let blocks = scan_switch_case(code_block, true);
-        assert_eq!(blocks.len(), 4);
     }
     #[test]
     fn should_get_files_works_test() {
