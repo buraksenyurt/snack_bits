@@ -22,7 +22,6 @@ fn main() {
                         }
                         Err(e) => {
                             println!("{}", e);
-                            return;
                         }
                     };
                 })
@@ -37,8 +36,8 @@ fn main() {
     }
 }
 
-fn process_file(content: &String) {
-    let blocks = scan_switch_case(&content);
+fn process_file(content: &str) {
+    let blocks = scan_switch_case(content);
     for mut block in blocks {
         //println!("{}\n{}", block.name, block.content);
         block.name.retain(|c| c != '.');
@@ -47,6 +46,7 @@ fn process_file(content: &String) {
             namespace {}
 
                 public class {}
+                    : IBusiness
                 {{
                     public void Apply() {{
                         {}
@@ -94,7 +94,7 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
     let mut case_line = String::new();
     let mut case_block = String::new();
     let mut namespace_founded = false;
-    let mut namespace_name: Box<String> = Box::new(String::new());
+    let mut namespace_name: Box<String> = Box::default();
 
     for line in content.lines() {
         if !namespace_founded && line.contains(NAMESPACE_EXPRESSION) {
@@ -128,7 +128,7 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
                 }
 
                 let case_line_parts: Vec<&str> = line.trim().splitn(2, COLON_EXPRESSION).collect();
-                if let Some(name) = case_line_parts.get(0) {
+                if let Some(name) = case_line_parts.first() {
                     case_line = name.to_string();
                 }
             } else if in_case {
