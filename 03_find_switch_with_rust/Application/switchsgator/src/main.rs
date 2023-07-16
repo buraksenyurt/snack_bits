@@ -4,7 +4,7 @@ use std::{env, fs, thread};
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        println!("Taramanın yapılacağı klasör path bilgisini vermelisiniz.");
+        println!("Taramanın yapılacağı klasör bilgisini vermelisiniz.");
         return;
     }
 
@@ -18,10 +18,7 @@ fn main() {
                     println!("{} işlenecek", &file.file_name().unwrap().to_string_lossy());
                     match fs::read_to_string(file) {
                         Ok(content) => {
-                            let blocks = scan_switch_case(&content);
-                            for block in blocks {
-                                println!("{}\n{}", block.name, block.content);
-                            }
+                            process_file(&content);
                         }
                         Err(e) => {
                             println!("{}", e);
@@ -37,6 +34,27 @@ fn main() {
         }
     } else {
         println!("'{}'. Bu path geçerli değil.", &args[1]);
+    }
+}
+
+fn process_file(content: &String) {
+    let blocks = scan_switch_case(&content);
+    for mut block in blocks {
+        //println!("{}\n{}", block.name, block.content);
+        block.name.retain(|c| c != '.');
+        let content = format!(
+            r"
+            namespace {}
+
+                public class {}
+                {{
+                    public void Apply() {{
+                        {}
+                    }}
+              }}",
+            block.namespace, block.name, block.content
+        );
+        fs::write(format!("./output/{}.cs", block.name), content).unwrap();
     }
 }
 
@@ -75,8 +93,19 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
     let mut in_case = false;
     let mut case_line = String::new();
     let mut case_block = String::new();
+    let mut namespace_founded = false;
+    let mut namespace_name: Box<String> = Box::new(String::new());
 
     for line in content.lines() {
+        if !namespace_founded && line.contains(NAMESPACE_EXPRESSION) {
+            namespace_founded = true;
+            namespace_name = Box::from(
+                line.trim_start_matches(NAMESPACE_EXPRESSION)
+                    .trim()
+                    .to_string(),
+            );
+            continue;
+        }
         if line.contains(SWITCH_EXPRESSION) {
             in_switch = true;
             continue;
@@ -88,6 +117,7 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
 
                 if !case_line.is_empty() {
                     result.push(Case {
+                        namespace: namespace_name.to_string(),
                         name: case_line
                             .trim_start_matches(CASE_EXPRESSION)
                             .trim()
@@ -114,6 +144,7 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
 
     if !case_line.is_empty() {
         result.push(Case {
+            namespace: namespace_name.to_string(),
             name: case_line
                 .trim_start_matches(CASE_EXPRESSION)
                 .trim()
@@ -127,6 +158,7 @@ fn scan_switch_case(content: &str) -> Vec<Case> {
 
 #[derive(Clone)]
 pub struct Case {
+    pub namespace: String,
     pub name: String,
     pub content: String,
 }
@@ -135,6 +167,7 @@ pub const SWITCH_EXPRESSION: &str = "switch";
 pub const CASE_EXPRESSION: &str = "case";
 pub const BREAK_EXPRESSION: &str = "break;";
 pub const COLON_EXPRESSION: &str = ":";
+pub const NAMESPACE_EXPRESSION: &str = "namespace";
 
 #[cfg(test)]
 mod test {
