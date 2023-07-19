@@ -1,27 +1,33 @@
 ﻿using System.Reflection;
-using System;
-using System.Linq;
-using System.IO;
 using System.Text;
 using Domain;
 public class Program
 {
     private static void Main(string[] args)
     {
-        var fields = typeof(ProcessType)
-            .GetFields(BindingFlags.Public | BindingFlags.Static)
-            .Where(fi => fi.IsLiteral && !fi.IsInitOnly);
+        var catcher = new EnumCatcher();
+        var content = catcher.Apply(typeof(ProcessType));
+        File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "Output.cs"), content.ToString());
+    }
+}
+
+public class EnumCatcher
+{
+    public string Apply(Type sourceType)
+    {
+        var fields = sourceType
+                    .GetFields(BindingFlags.Public | BindingFlags.Static)
+                    .Where(fi => fi.IsLiteral && !fi.IsInitOnly);
 
         var builder = new StringBuilder();
         builder.AppendLine($"public enum {nameof(ProcessType)}Enum");
         builder.AppendLine("{");
         foreach (var field in fields)
         {
-            builder.AppendLine($"\t{field.Name} = {typeof(ProcessType).GetField(field.Name).GetValue(null)},");
+            builder.AppendLine($"\t{field.Name} = {sourceType.GetField(field.Name).GetValue(null)},");
         }
         builder.AppendLine("}");
-
-        File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "Output.cs"), builder.ToString());
+        return builder.ToString();
     }
 }
 
