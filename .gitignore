@@ -398,3 +398,5 @@ FodyWeavers.xsd
 target
 target/*
 .idea
+04_constants_to_enum_csharp/Application/.vscode/launch.json
+04_constants_to_enum_csharp/Application/.vscode/tasks.json
