@@ -14,3 +14,11 @@ Bu ilk çözümün **handikapları** aşağıdaki gibi sıralanabilir,
 - C# dosyalarını satır bazlı olarak taramaktayım. Binlerce satırlık sınıf dosyaları içeren legacy sistemlere aşinayız. Bu noktada satır satır dosya taramak pek iyi bir çözüm değil gibi duruyor. Daha hızlı sonuca ulaşabileceğim bir tarama yöntemi bulmam lazım.
 - Şu an için üretilen c# dosyalarındaki formatlama hatalı durumda. Formatlama meselesini nasıl çözebilirim.
 - Apply metodu oldukça standart. Fonksiyonun case bloğundaki kod parçasına göre alması gereken parametreler varsa bunu anlayamıyoruz.
+
+## Çalışma Zamanı
+
+Örneğe clap küfesi eklendikten sonra çalıştırmak için aşağıdaki gibi ilerlenebilir.
+
+```bash
+cargo run -- multi ../BusinessLib
+```

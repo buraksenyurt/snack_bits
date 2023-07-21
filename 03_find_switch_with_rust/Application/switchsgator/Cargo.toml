@@ -6,3 +6,4 @@ description = "C# dosyalarındaki switch case yapılarındaki case bloklarını 
 authors = ["Burak Selim Şenyurt"]
 
 [dependencies]
+clap = "4.3.17"

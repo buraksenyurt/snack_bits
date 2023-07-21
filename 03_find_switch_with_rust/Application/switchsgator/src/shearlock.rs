@@ -1,7 +1,7 @@
-use std::path::{Path, PathBuf};
-use std::{fs, thread};
 use crate::case::Case;
 use crate::constants::*;
+use std::path::{Path, PathBuf};
+use std::{fs, thread};
 
 pub struct Shearlock;
 
