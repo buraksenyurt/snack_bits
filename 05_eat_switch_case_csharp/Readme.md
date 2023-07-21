@@ -227,4 +227,51 @@ namespace Business
 }
 ```
 
-Kod biraz daha uzadı ve aslında şu an için bir handikapı var. Enum sabitleri ile karşılık olan nesne bağımlılıklarını ShipmentManager construtor fonksiyonunda kodla yüklüyoruz. Bir Dictionary kullanmaktayız. Switch...case bloğunu bertaraf ettik ama yeni bir taşıma yöntemine göre maliyet hesaplaması ihtiyacı olduğunda yine ShipmentManager koduna müdahale etmememiz gerekiyor. Dolayısıyla enum-nesne ilişkilerini taşıyan bağımlılıkların yüklenme işini farklı bir modüle almalı ya da farklı bir şekilde entegre etmeliyiz. Bir DI Container aracı (Windsor Castle, Ninject vs) burada iş görebilir ya da built-in DI mekanizması ya da bir konfigurasyon dosyasından yüklenmeleri sağlanabilir. Örneğin bağımlı nesneleri interface ve nesne eşleri olarak bir JSON dosyasında tutup oradan yükleme yoluna da gidebiliriz - ben buna bir bakayım...
+Kod biraz daha uzadı ve aslında şu an için bir handikapı var. Enum sabitleri ile karşılık olan nesne bağımlılıklarını ShipmentManager construtor fonksiyonunda kodla yüklüyoruz. Bir Dictionary kullanmaktayız. Switch...case bloğunu bertaraf ettik ama yeni bir taşıma yöntemine göre maliyet hesaplaması ihtiyacı olduğunda yine ShipmentManager koduna müdahale etmememiz gerekiyor. Dolayısıyla enum-nesne ilişkilerini taşıyan bağımlılıkların yüklenme işini farklı bir modüle almalı ya da farklı bir şekilde entegre etmeliyiz. Bir DI Container aracı (Windsor Castle, Ninject, Autofac vs) burada iş görebilir ya da built-in DI mekanizması ya da bir konfigurasyon dosyasından yüklenmeleri sağlanabilir. Örneğin bağımlı nesneleri interface ve nesne eşleri olarak bir JSON dosyasında tutup oradan yükleme yoluna da gidebiliriz - ben buna bir bakayım...
+
+## ve Baktım
+
+İlk etapta eski dostlardan Ninject ile isim çözümlemesi yolunu kullanarak ilermekeye çalıştım ancak çalışma zamanında Resolve işlemi sırasında Exception aldım. Biraz kurcaladıktan sonra Autofac ile ilerlemeye devam etti ve 3ncü sürüm ortaya çıktı. Bağımlı nesnelerin eklenmesi için Core isim alanı altında DependencyInjection isimli bir sınıf yer alıyor. Bu sınıfta Autofac Container nesnesini kullanarak ihtiyaç olunan servis nesnesinin isimle çekilmesini sağlayabiliyoruz.
+
+```csharp
+namespace Core
+{
+    public static class DependencyInjection
+    {
+        private static ContainerBuilder builder;
+        private static IContainer container;
+        static DependencyInjection()
+        {
+            builder = new ContainerBuilder();
+            builder.RegisterType<Ship>().Named<IShipmentCost>(ShipmentType.ViaShip.ToString());
+            builder.RegisterType<Plane>().Named<IShipmentCost>(ShipmentType.ViaPlane.ToString());
+            builder.RegisterType<Truck>().Named<IShipmentCost>(ShipmentType.ViaTruck.ToString());
+            builder.RegisterType<Train>().Named<IShipmentCost>(ShipmentType.ViaTrain.ToString());
+            container = builder.Build();
+
+        }
+        public static T GetByName<T>(string name)
+        {
+            return container.ResolveNamed<T>(name);
+        }
+    }
+}
+
+// Kullanım şekli
+namespace Ordering
+{
+    using Business;
+    using Core;
+    using Domain;
+    public class ShipmentManager
+    {
+        public decimal CalculateCost(ShipmentType shipmentType, OrderInfo orderInfo)
+        {
+            var instance = DependencyInjection.GetByName<IShipmentCost>(shipmentType.ToString());
+            return instance.Calculate(orderInfo);
+        }
+    }
+}
+```
+
+İşin esprisi servisleri register ederken Named fonksiyonu ile benzersiz isimler vererek (örnekte ShipmentCost enum sabitini adıdır) ilerlememiz. Buna göre CalculateHost fonksiyonuna gelen enum sabitinin adından yararlanarak register edilen servis nesnesini elde etmemiz mümkün oluyor.
