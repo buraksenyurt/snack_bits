@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Business;
 using Ordering;
+using Autofac;
 
 var cpuOrder = new OrderInfo
 {
@@ -19,6 +20,29 @@ Console.WriteLine($"Gemiyle taşıma maliyeti {cost} birim");
 
 cost = costManager.CalculateCost(ShipmentType.ViaTrain, cpuOrder);
 Console.WriteLine($"Trenle taşıma maliyeti {cost} birim");
+
+namespace Core
+{
+    public static class DependencyInjection
+    {
+        private static ContainerBuilder builder;
+        private static IContainer container;
+        static DependencyInjection()
+        {
+            builder = new ContainerBuilder();
+            builder.RegisterType<Ship>().Named<IShipmentCost>(ShipmentType.ViaShip.ToString());
+            builder.RegisterType<Plane>().Named<IShipmentCost>(ShipmentType.ViaPlane.ToString());
+            builder.RegisterType<Truck>().Named<IShipmentCost>(ShipmentType.ViaTruck.ToString());
+            builder.RegisterType<Train>().Named<IShipmentCost>(ShipmentType.ViaTrain.ToString());
+            container = builder.Build();
+
+        }
+        public static T GetByName<T>(string name)
+        {
+            return container.ResolveNamed<T>(name);
+        }
+    }
+}
 
 namespace Domain
 {
@@ -41,33 +65,41 @@ namespace Domain
 namespace Ordering
 {
     using Business;
+    using Core;
     using Domain;
     public class ShipmentManager
     {
-        private ShipmentCostFactory factory = new ShipmentCostFactory();
-        public ShipmentManager()
-        {
-            // HANDİKAP!
-            //
-            // Bu yükleme işinide dışarıya almak iyi bir çözüm olabilir.
-            // Nitekim şu anda yeni bir araç için maliyet hesabı eklemek istersek
-            // evet CalculateHost'a bir block açmıyoruz ama buraya
-            // yeni bir factory.Add koymak zorunda kalıyoruz.
-            factory.Add(ShipmentType.ViaShip, new Ship());
-            factory.Add(ShipmentType.ViaPlane, new Plane());
-            factory.Add(ShipmentType.ViaTrain, new Train());
-            factory.Add(ShipmentType.ViaTruck, new Truck());
-        }
+        // private ShipmentCostFactory factory = new ShipmentCostFactory();
+        // public ShipmentManager()
+        // {
+        //     // HANDİKAP!
+        //     //
+        //     // Bu yükleme işinide dışarıya almak iyi bir çözüm olabilir.
+        //     // Nitekim şu anda yeni bir araç için maliyet hesabı eklemek istersek
+        //     // evet CalculateHost'a bir block açmıyoruz ama buraya
+        //     // yeni bir factory.Add koymak zorunda kalıyoruz.
+        //     factory.Add(ShipmentType.ViaShip, new Ship());
+        //     factory.Add(ShipmentType.ViaPlane, new Plane());
+        //     factory.Add(ShipmentType.ViaTrain, new Train());
+        //     factory.Add(ShipmentType.ViaTruck, new Truck());
+        // }
         public decimal CalculateCost(ShipmentType shipmentType, OrderInfo orderInfo)
         {
-            #region İkinci Sürüm
+            #region #3ncü Sürüm
 
-            var accounter = factory.Resolve(ShipmentType.ViaShip);
-            return accounter.Calculate(orderInfo);
+            var instance = DependencyInjection.GetByName<IShipmentCost>(shipmentType.ToString());
+            return instance.Calculate(orderInfo);
 
             #endregion
 
-            #region İlk Sürüm
+            #region #2nci Sürüm
+
+            // var accounter = factory.Resolve(shipmentType);
+            // return accounter.Calculate(orderInfo);
+
+            #endregion
+
+            #region #1nci Sürüm
 
             // decimal calculatedValue = 1.0M;
             // switch (shipmentType)
