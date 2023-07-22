@@ -3,19 +3,26 @@ use crate::constants::*;
 use std::path::{Path, PathBuf};
 use std::{fs, thread};
 
+#[derive(Copy, Clone)]
+pub enum Mode {
+    Single,
+    Multi,
+}
+
 pub struct Shearlock;
 
 impl Shearlock {
-    pub fn run(project_folder: &PathBuf) {
-        let files = Shearlock::get_files(&project_folder);
+    pub fn run(project_folder: &PathBuf, mode: Mode) {
+        let files = Shearlock::get_files(project_folder);
         let handles: Vec<_> = files
             .into_iter()
             .map(|file| {
                 thread::spawn(move || {
-                    println!("{} işlenecek", &file.file_name().unwrap().to_string_lossy());
-                    match fs::read_to_string(file) {
+                    let file_name = &file.file_name().unwrap().to_str().unwrap();
+                    //println!("{} işlenecek", &file.file_name().unwrap().to_string_lossy());
+                    match fs::read_to_string(&file) {
                         Ok(content) => {
-                            Shearlock::process_file(&content);
+                            Shearlock::process_file(file_name, &content, mode);
                         }
                         Err(e) => {
                             println!("{}", e);
@@ -30,25 +37,55 @@ impl Shearlock {
         }
     }
 
-    fn process_file(content: &str) {
+    fn process_file(file_name: &str, content: &str, mode: Mode) {
         let blocks = Self::scan_switch_case(content);
-        for mut block in blocks {
-            //println!("{}\n{}", block.name, block.content);
-            block.name.retain(|c| c != '.');
-            let content = format!(
-                r"
-            namespace {}
-
-                public class {}
-                    : IBusiness
-                {{
-                    public void Apply() {{
-                        {}
-                    }}
-              }}",
-                block.namespace, block.name, block.content
-            );
-            fs::write(format!("./output/{}.cs", block.name), content).unwrap();
+        match mode {
+            Mode::Single => {
+                let mut code = String::new();
+                let mut namespace = String::new();
+                let mut namespace_read: bool = false;
+                for mut block in blocks {
+                    if !namespace_read {
+                        namespace = block.namespace;
+                        namespace_read = true;
+                    }
+                    block.name.retain(|c| c != '.');
+                    code.push_str(
+                        format!(
+                            r"
+                            public class {} : IBusiness
+                            {{
+                                public void Apply() {{
+                                    {}
+                                }}
+                            }}",
+                            block.name, block.content
+                        )
+                        .as_str(),
+                    );
+                }
+                let mut last_code = format!("namespace {}", namespace);
+                last_code.push_str(code.as_str());
+                if !code.is_empty() {
+                    fs::write(format!("./output/{}.cs", file_name), last_code).unwrap();
+                }
+            }
+            Mode::Multi => {
+                for mut block in blocks {
+                    block.name.retain(|c| c != '.');
+                    let content = format!(
+                        r"namespace {}
+                        public class {} : IBusiness
+                        {{
+                            public void Apply() {{
+                                {}
+                            }}
+                        }}",
+                        block.namespace, block.name, block.content
+                    );
+                    fs::write(format!("./output/{}.cs", block.name), content).unwrap();
+                }
+            }
         }
     }
 

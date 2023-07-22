@@ -20,5 +20,9 @@ Bu ilk çözümün **handikapları** aşağıdaki gibi sıralanabilir,
 Örneğe clap küfesi eklendikten sonra çalıştırmak için aşağıdaki gibi ilerlenebilir.
 
 ```bash
-cargo run -- multi ../BusinessLib
+# multi mode için
+cargo run -- -m multi -s ../BusinessLib
+
+# single mode için
+cargo run -- -m single -s ../BusinessLib
 ```
