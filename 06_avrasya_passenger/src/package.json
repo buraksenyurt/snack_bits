@@ -1,0 +1,16 @@
+{
+  "name": "passenger",
+  "version": "1.0.0",
+  "description": "A test project for avrasya web framework",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start":"node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "avrasya": "^1.0.9"
+  }
+}

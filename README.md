@@ -7,3 +7,4 @@ Tek başına repo olamayacak, farklı konularda ve anlık olarak karşıma çık
 - [x] **03_find_switch_with_rust:** Bu örnekte amacım c# kod dosyalarında geçen switch bloklarını tespit etmek ve bunu Rust ile yapmak. Hatta switch bloklarının kolayca bulunması için pest isimli yardımcı bir rust küfesini kullanmayı düşünüyorum.
 - [x] **02_if_rule_engine_csharp:** Bu ikinci örnekte de if bloklarından sıyrılmaya çalışıyorum. Bu sefer .Net tarafında popüler olan bir rule engine paketini işin içerisine katmaktayım.
 - [x] **01_if_challenge_csharp :** Repoyu açmaya karar verdiğim günün ilk örneği. Karşılaştığım bir kod parçasındaki if bloklarından sadece kurtulmak istedim.
+- [ ] **06_avrasya_passenger :** Değerli meslektaşlarımdan Muhtalip Dede'nin geliştirdiği Nodejs tabanlı web framework'ü kullanmayı denediğim bir uygulama eklemek istedim.
