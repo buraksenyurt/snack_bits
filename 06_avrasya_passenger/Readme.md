@@ -32,3 +32,13 @@ npm run start
 ```
 
 ![avrasya_passenger_01.png](avrasya_passenger_01.png)
+
+Repodaki örnek kodlar Typescript ile yazılmış. Ben javascript ile denemek istedim. Aşağıdaki gibi bir hata mesajı aldım. Kıt Nodejs bilgime göre hatalı bir şey de yapmış olabilirim tabii.
+
+![avrasya_passenger_02.png](avrasya_passenger_02.png)
+
+Bunun üzerine package.json'a hata mesajında önerdiği üzere "type":"module" bildirimini ekledim. Bu başka bir probleme neden oldu.
+
+![avrasya_passenger_03.png](avrasya_passenger_03.png)
+
+Bakalım 

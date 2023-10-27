@@ -1,6 +1,6 @@
-import Avrasya from "avrasya";
+import avrasya from "avrasya";
 
-const server = new Avrasya();
+var server = new avrasya();
 
 server.router.get("/", (ctx) => {
     ctx.send("Wellcome to my real world");
