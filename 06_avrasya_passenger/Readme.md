@@ -41,4 +41,4 @@ Bunun üzerine package.json'a hata mesajında önerdiği üzere "type":"module" 
 
 ![avrasya_passenger_03.png](avrasya_passenger_03.png)
 
-Bakalım 
+Bakalım. Şimdilik burada kaldım. Konu ile ilgili bir de [issue açtım](https://github.com/muhtalipdede/avrasya/issues/1).
