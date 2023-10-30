@@ -42,3 +42,9 @@ Bunun üzerine package.json'a hata mesajında önerdiği üzere "type":"module" 
 ![avrasya_passenger_03.png](avrasya_passenger_03.png)
 
 Bakalım. Şimdilik burada kaldım. Konu ile ilgili bir de [issue açtım](https://github.com/muhtalipdede/avrasya/issues/1).
+
+Issue çözümlendikten sonra başarılı şekilde sunucuyu çalıştırıp basit HTTP çağrıları yapabildim. Get, Post, Put ve Delete çağrımlarını deniyorum.
+
+![avrasya_passenger_04.png](avrasya_passenger_04.png)
+
+Ancak şimdi farklı bir yerde takıldım. Şu anda parametrik çağrımları gerçekleştiremiyorum. Örneğin http://localhost:1923/product/1234 adresine bir HTTP Get talebi gönderdiğimde 1234 değerini alıp bir şeyler yapabilmek istiyorum. Parametre kullanımım yanlış da olabilir tabii. Konu ile ilgili [yeni bir issue](https://github.com/muhtalipdede/avrasya/issues/3) açarak repoya katkı vermeye çalışıyorum.
