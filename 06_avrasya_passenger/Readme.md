@@ -48,3 +48,22 @@ Issue çözümlendikten sonra başarılı şekilde sunucuyu çalıştırıp basi
 ![avrasya_passenger_04.png](avrasya_passenger_04.png)
 
 Ancak şimdi farklı bir yerde takıldım. Şu anda parametrik çağrımları gerçekleştiremiyorum. Örneğin http://localhost:1923/product/1234 adresine bir HTTP Get talebi gönderdiğimde 1234 değerini alıp bir şeyler yapabilmek istiyorum. Parametre kullanımım yanlış da olabilir tabii. Konu ile ilgili [yeni bir issue](https://github.com/muhtalipdede/avrasya/issues/3) açarak repoya katkı vermeye çalışıyorum.
+
+Açılan issue için gelen cevaba göre parametreyi şu şekilde kullanmak gerekiyor.
+
+```js
+import avrasya from "avrasya";
+
+const server = new avrasya.default();
+
+server.router.get("/product/:id", (ctx) => {
+    console.log(ctx.params["id"]);
+    ctx.send(ctx.params["id"] + " product infos");
+});
+
+server.listen(1923);
+```
+
+Buna göre çalışma zamanında aşağıdaki sonuçları elde edebildim.
+
+![avrasya_passenger_05.png](avrasya_passenger_05.png)
