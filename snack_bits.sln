@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLib", "03_find_switch_with_rust\Application\BusinessLib\BusinessLib.csproj", "{77C42CDA-B969-478F-9268-C44E2C0159E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_remembering_events", "07_remembering_events\07_remembering_events.csproj", "{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
