@@ -3,8 +3,50 @@
 static class Program
 {
     static void Main()
-    {
+{
+    var randomizer = new Random();
+    var weatherTypeValues = Enum.GetValues(typeof(WeatherType));
 
+    var locations = new List<Location>{
+        new(new WarningConfiguration(41,80),"İstanbul",(WeatherType)randomizer.Next(weatherTypeValues.Length)),
+        new(new WarningConfiguration(36.5,60),"Berlin",(WeatherType)randomizer.Next(weatherTypeValues.Length)),
+        new(new WarningConfiguration(38.5,40),"Tokyo",(WeatherType)randomizer.Next(weatherTypeValues.Length)),
+    };
+    foreach (var location in locations)
+    {
+        location.HumidityOverloaded += Measurement_Overloaded;
+        location.HeatOverloaded += Measurement_Overloaded;
+    }
+
+    Console.WriteLine("Rasathane Gözlemevi");
+
+    while (true)
+    {
+        foreach (var location in locations)
+        {
+            var heatValue = Utility.GetRandomDouble(1, 45);
+            var humidityValue = Utility.GetRandomDouble(10, 99);
+            location.Humidity = humidityValue;
+            location.Heat = heatValue;
+            Thread.Sleep(2000);
+        }
+    }
+}
+
+private static void Measurement_Overloaded(object sender, OverloadEventArgs eventArgs)
+{
+    var location = (Location)sender;
+    Console.WriteLine($"{eventArgs.AlertTime} : {location.Title}({location.WeatherType}) {eventArgs.AlertType} ({eventArgs.Value:F2})");
+}
+}
+
+static class Utility
+{
+    public static double GetRandomDouble(double min, double max)
+    {
+        Random rnd = new();
+        var value = rnd.NextDouble();
+        return value * (max - min) + min;
     }
 }
 
