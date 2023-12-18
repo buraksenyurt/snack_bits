@@ -38,6 +38,35 @@ public class DependencyTests
         var actual = gameWorldManager.Games.Count();
         var expected = 4;
         Assert.Equal(expected, actual);
+    }
 
+    [Fact]
+    public void SaveAll_Is_Invalid_For_Invalid_Path()
+    {
+        var fileName = "xyz://games";
+        GameWorldManager gameWorldManager = new(new CsvWriter());
+        Game aGame = new(1, "World of Warcraft", 8.4);
+        gameWorldManager.AddGame(aGame);
+        gameWorldManager.AddGame(new(2, "Flashback", 7.6));
+        gameWorldManager.AddGame(new(3, "Prince of Persia", 5.6));
+        gameWorldManager.AddGame(new(4, "Super Mario", 9.5));
+        var actual = gameWorldManager.SaveAll(fileName).Status;
+        var expected = new Result { Status = Status.TargetFileError, Message = string.Empty }.Status;
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void SaveAll_Is_Ok_For_Valid_Path()
+    {
+        var fileName = "games";
+        GameWorldManager gameWorldManager = new(new CsvWriter());
+        Game aGame = new(1, "World of Warcraft", 8.4);
+        gameWorldManager.AddGame(aGame);
+        gameWorldManager.AddGame(new(2, "Flashback", 7.6));
+        gameWorldManager.AddGame(new(3, "Prince of Persia", 5.6));
+        gameWorldManager.AddGame(new(4, "Super Mario", 9.5));
+        var actual = gameWorldManager.SaveAll(fileName).Status;
+        var expected = new Result { Status = Status.FileSaved, Message = string.Empty }.Status;
+        Assert.Equal(expected, actual);
     }
 }

@@ -22,10 +22,9 @@ public class GameWorldManager
         return new Result { Status = Status.AlreadyExist, Message = "Oyun zaten listede yer alıyor." };
     }
 
-    public Result SaveAll()
-    {
-        var defaultPath = Path.Combine(Environment.CurrentDirectory, "Games.csv");
-        var result = _fileWriter.Write(defaultPath, (List<Game>)games);
+    public Result SaveAll(string fileName)
+    {       
+        var result = _fileWriter.Write(fileName, (List<Game>)games);
         return result;
     }
 }

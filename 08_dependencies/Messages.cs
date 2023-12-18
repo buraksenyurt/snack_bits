@@ -7,7 +7,9 @@ public enum Status
     Deleted,
     Found,
     Updated,
-    FileSaved
+    FileSaved,
+    TargetFileError,
+    FileSaveError
 }
 
 public class Result
