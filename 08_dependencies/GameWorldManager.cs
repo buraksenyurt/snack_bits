@@ -1,3 +1,5 @@
+using Sdk;
+
 namespace AzonWorks;
 
 public class GameWorldManager
@@ -6,13 +8,13 @@ public class GameWorldManager
 
     public IList<Game> Games => games;
 
-    public Result Add(Game game)
+    public Result AddGame(Game game)
     {
         if (!games.Contains(game))
         {
             games.Add(game);
-            return new Result { Status = Status.Added, Title = "Oyun eklendi." };
+            return new Result { Status = Status.Added, Message = "Oyun eklendi." };
         }
-        return new Result { Status = Status.AlreadyExist, Title = "Oyun zaten listede yer alıyor." };
+        return new Result { Status = Status.AlreadyExist, Message = "Oyun zaten listede yer alıyor." };
     }
 }

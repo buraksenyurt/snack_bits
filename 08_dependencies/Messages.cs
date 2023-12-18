@@ -1,4 +1,4 @@
-namespace AzonWorks;
+namespace Sdk;
 
 public enum Status
 {
@@ -11,6 +11,6 @@ public enum Status
 
 public class Result
 {
-    public string Title { get; set; }
+    public string Message { get; set; } = string.Empty;
     public Status Status { get; set; }
 }
