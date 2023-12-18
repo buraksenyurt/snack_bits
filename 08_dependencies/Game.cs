@@ -1,5 +1,8 @@
+using Sdk;
+
 namespace AzonWorks;
 public class Game
+    : IEntity
 {
     public int Id { get; set; }
     public string Title { get; set; } = "Unknown Name";
@@ -10,4 +13,5 @@ public class Game
         Title = title;
         Point = point;
     }
+    public override string ToString() => $"{Id}|{Title}|{Point}";
 }

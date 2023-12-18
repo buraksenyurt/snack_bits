@@ -1,22 +1,18 @@
-using System.Text;
+using System.Text.Json;
 using Sdk;
 
 namespace AzonWorks;
 
-public class CsvWriter
+public class JSonWriter
     : IWriter<Game>
 {
     public Result Write(string fileName, List<Game> source)
     {
         try
         {
-            var targetPath = Path.Combine(Environment.CurrentDirectory, $"{fileName}.csv");
-            StringBuilder builder = new();
-            foreach (var game in source)
-            {
-                builder.AppendLine(game.ToString());
-            }
-            File.WriteAllText(targetPath, builder.ToString());
+            var targetPath = Path.Combine(Environment.CurrentDirectory, $"{fileName}.json");
+            var content = JsonSerializer.Serialize(source, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(targetPath, content);
         }
         catch (DirectoryNotFoundException excp)
         {
