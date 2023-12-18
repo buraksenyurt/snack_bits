@@ -6,7 +6,8 @@ public enum Status
     AlreadyExist,
     Deleted,
     Found,
-    Updated
+    Updated,
+    FileSaved
 }
 
 public class Result
