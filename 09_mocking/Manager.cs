@@ -1,11 +1,13 @@
-﻿namespace _09_mocking;
+﻿namespace KanbanWorld;
 public class Manager
 {
     private readonly List<WorkItem> _workItems;
+    private readonly IFileLoader _fileLoader;
 
-    public Manager()
+    public Manager(IFileLoader fileLoader)
     {
         _workItems = [];
+        _fileLoader = fileLoader;
         LoadFromFile();
     }
     public int GetCount()
@@ -19,7 +21,8 @@ public class Manager
     private void LoadFromFile()
     {
         var filePath = Path.Combine(Environment.CurrentDirectory, "data.csv");
-        var lines = File.ReadAllLines(filePath);
+        // var lines = File.ReadAllLines(filePath);
+        var lines = _fileLoader.LoadLines(filePath);
         foreach (var line in lines)
         {
             var columns = line.Split('|');
