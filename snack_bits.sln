@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00_common_tests", "00_commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_mocking", "09_mocking\09_mocking.csproj", "{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_mocking_tests", "09_mocking_tests\09_mocking_tests.csproj", "{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
