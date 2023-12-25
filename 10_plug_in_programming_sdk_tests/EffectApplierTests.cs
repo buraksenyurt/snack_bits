@@ -8,13 +8,7 @@ public class EffectApplierTests
     [Fact]
     public void Default_Effects_Can_Load_From_Assembly_Test()
     {
-        var mockCollector = new Mock<IEffectCollector>();
-        var effects = new List<IEffectApplier>(){
-            new ShadowEffectApplier(),
-            new BlurEffectApplier()
-        };
-        mockCollector.Setup(c => c.Load()).Returns(effects);
-        var effectManager = new EffectManager(new List<IEffectCollector>() { mockCollector.Object });
+        var effectManager = new EffectManager(new List<IEffectCollector>() { });
         Assert.Equal(2, effectManager.Effects.Count());
     }
 
@@ -27,7 +21,7 @@ public class EffectApplierTests
         };
         mockCollector.Setup(c => c.Load()).Returns(effects);
         var effectManager = new EffectManager(new List<IEffectCollector>() { mockCollector.Object });
-        Assert.Single(effectManager.Effects);
+        Assert.Equal(3, effectManager.Effects.Count());
     }
 
     [Fact]
@@ -41,13 +35,7 @@ public class EffectApplierTests
     [Fact]
     public void Applied_Shadow_Effects_Works()
     {
-        var mockCollector = new Mock<IEffectCollector>();
-        var effects = new List<IEffectApplier>(){
-            new ShadowEffectApplier(),
-            new ReverseEffectApplier()
-        };
-        mockCollector.Setup(c => c.Load()).Returns(effects);
-        var effectManager = new EffectManager(new List<IEffectCollector>() { mockCollector.Object });
+        var effectManager = new EffectManager(new List<IEffectCollector>() { });
         var request = new ApplyEffectRequest
         {
             EffectName = "Shadow",

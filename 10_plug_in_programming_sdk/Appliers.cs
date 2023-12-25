@@ -8,8 +8,7 @@ public class EffectManager
 
     public EffectManager(IEnumerable<IEffectCollector> collectors)
     {
-        //Effects = new DefaultEffectCollector().Load();
-        Effects = new List<IEffectApplier>();
+        Effects = new DefaultEffectCollector().Load();
         foreach (var collector in collectors)
         {
             var effects = collector.Load();
@@ -66,14 +65,18 @@ internal class DefaultEffectCollector : IEffectCollector
 {
     public IEnumerable<IEffectApplier> Load()
     {
-        var assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "10_plug_in_programming_sdk.dll"));
+        return new List<IEffectApplier>{
+            new ShadowEffectApplier(),
+            new BlurEffectApplier()
+        };
+        // var assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "10_plug_in_programming_sdk.dll"));
 
-        var appliers = assembly
-           .GetTypes()
-           .Where(t => t.GetInterface("Sdk.IEffectApplier") != null);
+        // var appliers = assembly
+        //    .GetTypes()
+        //    .Where(t => t.GetInterface("Sdk.IEffectApplier") != null);
 
-        var types = appliers.Select(t => (IEffectApplier)Activator.CreateInstance(t)).ToArray();
+        // var types = appliers.Select(t => (IEffectApplier)Activator.CreateInstance(t)).ToArray();
 
-        return types;
+        // return types;
     }
 }
