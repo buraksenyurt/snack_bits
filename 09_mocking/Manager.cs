@@ -6,7 +6,7 @@ public class Manager
 
     public Manager(IFileLoader fileLoader)
     {
-        _workItems = [];
+        _workItems = new List<WorkItem>();
         _fileLoader = fileLoader;
         LoadFromFile();
     }
