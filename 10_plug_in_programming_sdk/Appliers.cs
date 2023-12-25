@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Reflection;
 
 namespace Sdk;
@@ -6,9 +7,17 @@ public class EffectManager
 {
     public IEnumerable<IApplyEffect> Effects { get; }
 
-    public EffectManager(IEffectCollector collector)
+    public EffectManager(IEnumerable<IEffectCollector> collectors)
     {
-        Effects = collector.LoadEffects();
+        Effects = new DefaultEffectCollector().LoadEffects();
+        foreach (var collector in collectors)
+        {
+            var effects = collector.LoadEffects();
+            foreach (var effect in effects)
+            {
+                _ = Effects.Append(effect);
+            }
+        }
     }
 
     public static ApplyEffectResponse Apply(IApplyEffect effect, ApplyEffectRequest request)
