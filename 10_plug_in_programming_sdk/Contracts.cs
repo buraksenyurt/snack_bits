@@ -2,23 +2,29 @@
 
 public interface IEffectType
 {
-    string Title { get; set; }
-    string Description { get; set; }
+    string Title { get; }
+    string Description { get; }
 }
 
-public interface IApplyEffectResponse
+public class ApplyEffectResponse
 {
-    bool Applied { get; set; }
-    string Error { get; set; }
-    object Result { get; set; }
+    public bool Applied { get; set; }
+    public string? Error { get; set; }
+    public required object Result { get; set; }
 }
 
-public interface IApplyEffectRequest
+public class ApplyEffectRequest
 {
-    object Source { get; set; }
+    public required object Source { get; set; }
 }
 
 public interface IApplyEffect
 {
-    IApplyEffectResponse Apply(IApplyEffectRequest request);
+    IEffectType Kind { get; }
+    ApplyEffectResponse Apply(ApplyEffectRequest request);
+}
+
+public interface IEffectCollector
+{
+    IEnumerable<IApplyEffect> LoadEffects();
 }
