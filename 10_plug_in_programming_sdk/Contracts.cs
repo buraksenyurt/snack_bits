@@ -19,7 +19,7 @@ public class ApplyEffectRequest
     public required object Source { get; set; }
 }
 
-public interface IApplyEffect
+public interface IEffectApplier
 {
     IEffectType Kind { get; }
     ApplyEffectResponse Apply(ApplyEffectRequest request);
@@ -27,5 +27,5 @@ public interface IApplyEffect
 
 public interface IEffectCollector
 {
-    IEnumerable<IApplyEffect> LoadEffects();
+    IEnumerable<IEffectApplier> Load();
 }

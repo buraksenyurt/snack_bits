@@ -4,29 +4,29 @@ namespace Sdk;
 
 public class EffectManager
 {
-    public IEnumerable<IApplyEffect> Effects { get; }
+    public IEnumerable<IEffectApplier> Effects { get; }
 
     public EffectManager(IEnumerable<IEffectCollector> collectors)
     {
-        Effects = new DefaultEffectCollector().LoadEffects();
+        //Effects = new DefaultEffectCollector().Load();
+        Effects = new List<IEffectApplier>();
         foreach (var collector in collectors)
         {
-            var effects = collector.LoadEffects();
+            var effects = collector.Load();
             foreach (var effect in effects)
             {
-                _ = Effects.Append(effect);
+                Effects = Effects.Append(effect);
             }
         }
     }
 
     public ApplyEffectResponse Apply(ApplyEffectRequest request)
     {
-        foreach (var effect in Effects)
+        foreach (var e in Effects)
         {
-            Console.WriteLine($".... {effect.Kind.Title}");
-            if (effect.Kind.Title.ToLower().Equals(request.EffectName.ToLower()))
+            if (e.Kind.Title.ToLower().Equals(request.EffectName.ToLower()))
             {
-                return effect.Apply(request);
+                return e.Apply(request);
             }
         }
         return new ApplyEffectResponse
@@ -38,7 +38,7 @@ public class EffectManager
     }
 }
 
-public class ShadowEffectApplier : IApplyEffect
+public class ShadowEffectApplier : IEffectApplier
 {
     public IEffectType Kind => new ShadowEffect();
 
@@ -53,7 +53,7 @@ public class ShadowEffectApplier : IApplyEffect
     }
 }
 
-public class BlurEffectApplier : IApplyEffect
+public class BlurEffectApplier : IEffectApplier
 {
     public IEffectType Kind => new BlurEffect();
     public ApplyEffectResponse Apply(ApplyEffectRequest request)
@@ -64,19 +64,16 @@ public class BlurEffectApplier : IApplyEffect
 
 internal class DefaultEffectCollector : IEffectCollector
 {
-    public IEnumerable<IApplyEffect> LoadEffects()
+    public IEnumerable<IEffectApplier> Load()
     {
-        var result = new List<IApplyEffect>();
         var assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "10_plug_in_programming_sdk.dll"));
+
         var appliers = assembly
-            .GetTypes()
-            .Where(t => t.GetInterface("Sdk.IApplyEffect") != null)
-            .Select(t => t as IApplyEffect);
-        foreach (var applier in appliers)
-        {
-            var instance = (IApplyEffect)Activator.CreateInstance(applier.GetType());
-            result.Add(instance);
-        }
-        return result;
+           .GetTypes()
+           .Where(t => t.GetInterface("Sdk.IEffectApplier") != null);
+
+        var types = appliers.Select(t => (IEffectApplier)Activator.CreateInstance(t)).ToArray();
+
+        return types;
     }
 }
