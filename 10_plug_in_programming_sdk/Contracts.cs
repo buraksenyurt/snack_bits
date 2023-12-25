@@ -10,11 +10,12 @@ public class ApplyEffectResponse
 {
     public bool Applied { get; set; }
     public string? Error { get; set; }
-    public required object Result { get; set; }
+    public required object? Result { get; set; }
 }
 
 public class ApplyEffectRequest
 {
+    public required string EffectName { get; set; }
     public required object Source { get; set; }
 }
 

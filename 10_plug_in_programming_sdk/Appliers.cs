@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Reflection;
 
 namespace Sdk;
@@ -20,9 +19,22 @@ public class EffectManager
         }
     }
 
-    public static ApplyEffectResponse Apply(IApplyEffect effect, ApplyEffectRequest request)
+    public ApplyEffectResponse Apply(ApplyEffectRequest request)
     {
-        return effect.Apply(request);
+        foreach (var effect in Effects)
+        {
+            Console.WriteLine($".... {effect.Kind.Title}");
+            if (effect.Kind.Title.ToLower().Equals(request.EffectName.ToLower()))
+            {
+                return effect.Apply(request);
+            }
+        }
+        return new ApplyEffectResponse
+        {
+            Applied = false,
+            Result = null,
+            Error = "Efekt bulunamadı"
+        };
     }
 }
 
@@ -32,7 +44,12 @@ public class ShadowEffectApplier : IApplyEffect
 
     public ApplyEffectResponse Apply(ApplyEffectRequest request)
     {
-        throw new NotImplementedException();
+        return new ApplyEffectResponse
+        {
+            Applied = true,
+            Result = request.Source,
+            Error = string.Empty
+        };
     }
 }
 
@@ -45,15 +62,21 @@ public class BlurEffectApplier : IApplyEffect
     }
 }
 
-public class DefaultEffectCollector : IEffectCollector
+internal class DefaultEffectCollector : IEffectCollector
 {
     public IEnumerable<IApplyEffect> LoadEffects()
     {
+        var result = new List<IApplyEffect>();
         var assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "10_plug_in_programming_sdk.dll"));
         var appliers = assembly
             .GetTypes()
             .Where(t => t.GetInterface("Sdk.IApplyEffect") != null)
             .Select(t => t as IApplyEffect);
-        return appliers;
+        foreach (var applier in appliers)
+        {
+            var instance = (IApplyEffect)Activator.CreateInstance(applier.GetType());
+            result.Add(instance);
+        }
+        return result;
     }
 }
