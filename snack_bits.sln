@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming_sdk"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming", "10_plug_in_programming\10_plug_in_programming.csproj", "{71FC3C08-361F-4709-AE13-09B699833373}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming_sdk_tests", "10_plug_in_programming_sdk_tests\10_plug_in_programming_sdk_tests.csproj", "{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{71FC3C08-361F-4709-AE13-09B699833373}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71FC3C08-361F-4709-AE13-09B699833373}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71FC3C08-361F-4709-AE13-09B699833373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
