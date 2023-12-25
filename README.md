@@ -2,6 +2,7 @@
 
 Tek başına repo olamayacak, farklı konularda ve anlık olarak karşıma çıkan durumlara istinaden ele aldığım kod parçalarını toplamayı düşündüğüm alandır. Örneğin işimde karşılaştığım bir kod probleminin çözümü ya da öğrendiğim pratik bir bilginin basit uygulamasını bu repo altındaki klasörlerde toparlayabilirim.
 
+- [ ] **10_plug_in_programming ve 10_plug_in_programming_sdk:** Bu çalışmadaki amacım dışarıdan yeni efektler entegre edilebilen bir fotoğraf kütüphanesinin iskeletini oluşturabilmek. Temel gayem plug-in'lerin interface'ler aracılığıyla sisteme dahil edilmesini sağlamak.
 - [x] **09_mocking ve 09_mocking_test :** Bu çalışmadaki amaç test edilebilirlik için kodun yeniden değerlendirilmesi ve mock nesne kullanımlarını keşfetmektir.
 - [x] **08_dependencies :** Nesne bağımlılıklarını yönetmenin etkili enstrümanlarından birisi de arayüz(Interface) kullanımı. Bu örnekte bir veri kümesinin fiziki diske yazma operasyonuna ilişkin bağımlılığı dışarıya açmanın ideal yolunu bulmaya çalışıyorum. 
 - [x] **07_remembering_events :** C# ile geliştirilen uygulamalarda event kullanımını hatırlamak amacıyla basit ve az biraz eğlenceli olduğunu düşündüğüm bir uygulamayı eklemek istedim.
