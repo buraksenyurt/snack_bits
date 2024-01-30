@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_HighwayToHell", "11_High
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_MasterOfPuppets", "11_MasterOfPuppets\11_MasterOfPuppets.csproj", "{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_Paranoid", "11_Paranoid\11_Paranoid.csproj", "{FC401561-1259-4389-96DF-1C6B05E22031}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC401561-1259-4389-96DF-1C6B05E22031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC401561-1259-4389-96DF-1C6B05E22031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC401561-1259-4389-96DF-1C6B05E22031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC401561-1259-4389-96DF-1C6B05E22031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
