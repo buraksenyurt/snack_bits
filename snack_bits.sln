@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_MasterOfPuppets", "11_Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_Paranoid", "11_Paranoid\11_Paranoid.csproj", "{FC401561-1259-4389-96DF-1C6B05E22031}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_SymphonyOfDestruction", "11_SymphonyOfDestruction\11_SymphonyOfDestruction.csproj", "{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{FC401561-1259-4389-96DF-1C6B05E22031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC401561-1259-4389-96DF-1C6B05E22031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC401561-1259-4389-96DF-1C6B05E22031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
