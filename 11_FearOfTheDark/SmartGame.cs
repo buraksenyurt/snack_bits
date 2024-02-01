@@ -2,14 +2,14 @@
 {
     public class SmartGame
     {
-        private List<ICharacter> _characters;
+        private List<AttackingCharacter> _characters;
 
         public SmartGame()
         {
             _characters = [];
         }
 
-        public void AddCharacters(List<ICharacter> characters)
+        public void AddCharacters(List<AttackingCharacter> characters)
         {
             _characters = characters;
         }

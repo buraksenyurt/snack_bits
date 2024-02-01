@@ -1,32 +1,32 @@
 ﻿namespace FearOfTheDark
 {
-    public interface ICharacter
+    public abstract class AttackingCharacter
     {
-        void Attack();
+        public abstract void Attack();
     }
 
     public class OrcWarrior
-        : ICharacter
+        : AttackingCharacter
     {
-        public void Attack()
+        public override void Attack()
         {
             Console.WriteLine("Savaşçı kılıçla karşı saldırıya geçti");
         }
     }
 
     public class OrcWizzard
-        : ICharacter
+        : AttackingCharacter
     {
-        public void Attack()
+        public override void Attack()
         {
             Console.WriteLine("Büyücü sihirli gücüyle karşı saldırıya geçti");
         }
     }
 
     public class OrcArcher
-        : ICharacter
+        : AttackingCharacter
     {
-        public void Attack()
+        public override void Attack()
         {
             Console.WriteLine("Okçu ok fırlatarak saldırıya geçti");
         }
