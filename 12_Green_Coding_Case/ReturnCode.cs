@@ -4,4 +4,6 @@ public enum ReturnCode{
     MainAccountNotFound,
     Success,
     NumberedDocumentNotFound,
+    EmailSent,
+    FtpSent,
 }

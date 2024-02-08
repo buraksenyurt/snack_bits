@@ -16,6 +16,6 @@ public class Context
 
     public object Get(string key)
     {
-        return _elements.FirstOrDefault(e => e.Key == key);
+        return _elements.FirstOrDefault(e => e.Key == key).Value;
     }
 }

@@ -8,11 +8,24 @@ namespace MarineCorp.Erp.Business;
 
 public class ChargeManager
 {
-    public virtual byte[] PrintAllDocument(Context context, ref string errorMessage)
+    public ReturnCode SendMail(byte[] content, string to)
+    {
+        // Süreç içerisinde üretilen PDF içeriği email olarak gönderilir
+        Console.WriteLine("Email gönderimi gerçekleştirilir.");
+        return ReturnCode.EmailSent;
+    }
+    public ReturnCode SendFtp(byte[] content)
+    {
+        // E-Posta eki olarak gönderilemeyecek durumlarda ftp'ye bırakma işi söz konusudur
+        Console.WriteLine("İçerik FTP'ye bırakıldı");
+        Console.WriteLine("Kullanıcının dokümanı indirebileceği FTP adresi e-posta ile bildirilir");
+        return ReturnCode.FtpSent;
+    }
+    public byte[] PrintAllDocument(Context context, ref string errorMessage)
     {
         int chargeDetailId = Convert.ToInt32(context.Get("chargeDetailId"));
         short searchType = Convert.ToInt16(context.Get("searchType"));
-        int firmId = Convert.ToInt32(context.Get("firmId"));
+        int customerId = Convert.ToInt32(context.Get("customerId"));
         short moduleId = Convert.ToInt16(context.Get("moduleId"));
         short documentTypeId = Convert.ToInt16(context.Get("documentTypeId"));
         int userId = Convert.ToInt32(context.Get("userId"));
@@ -46,7 +59,7 @@ public class ChargeManager
             }
             var document = new ChargeSearch
             {
-                CustomerId = firmId,
+                CustomerId = customerId,
                 ModuleId = moduleId,
                 DocumentTypeId = documentTypeId,
                 DocumentNumber = chargeNumber,
@@ -55,7 +68,7 @@ public class ChargeManager
                 UserId = userId,
             };
             DataTable chargeDataTable = documentManager.Search(document);
-            if (chargeDataTable == null || chargeDataTable.Rows.Count > 1)
+            if (chargeDataTable == null || chargeDataTable.Rows.Count == 0)
             {
                 failReport.Append($"{chargeNumber} - ");
                 continue;
@@ -104,6 +117,6 @@ public class ChargeManager
         dataRow["charge_date"] = DateTime.Now.AddDays(-5);
         dataTable.Rows.Add(dataRow);
 
-        return new DataTable();
+        return dataTable;
     }
 }

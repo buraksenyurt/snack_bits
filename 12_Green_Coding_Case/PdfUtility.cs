@@ -16,7 +16,13 @@ public class PdfDocument
     {
         Console.WriteLine("PDF Üretimi gerçekleştiriliyor");
         // Parametre olarak gelen memoryStream ve enum değerini kullanarak bir Pdf üretir
-        return new Pdf();
+        return new Pdf()
+        {
+            Pages = new List<PdfPage>{
+                new PdfPage(),
+                new PdfPage(),
+            }
+        };
     }
 
     public void Save(MemoryStream stream, bool saveCriteria)
