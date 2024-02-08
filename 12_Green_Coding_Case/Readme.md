@@ -1,0 +1,1 @@
+# Enerji Sarfiyatı Yüksek Kodlama Senaryosu
