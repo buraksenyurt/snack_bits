@@ -12,12 +12,14 @@ Müşteri tarafından istenen istek şu şekildedir;
 
 Hali hazırda uygulanmış olan çözümün çalıştırdığı proccess'ler ve entegrasyon noktaları aşağıdaki gibi özetlenebilir.
 
-**Main Process 	        :** Web Server
-**Process 1 	        :** Database Server
-**Process 2	            :** Document Server
-**Process 3             :** PDF Utility
-**Process 4             :** EMail Server
-**Process 5	            :** FTP Server
+| Process      	| Bilgi                                                                               	|
+|--------------	|-------------------------------------------------------------------------------------	|
+| Main Process 	| Ana ERP sistemi, .Net Web Uygulaması, .Net Runtime                                  	|
+| Process 1    	| RDBMS, Database Server                                                              	|
+| Process 2    	| Document Server, XML Web Service, byte[] dönen fonksiyon                            	|
+| Process 3    	| PDF Utility, Main Process içerisinde çalışan PDF yönetim aracı, 3rd Party Component 	|
+| Process 4    	| Mail Server                                                                         	|
+| Process 5    	| FTP Server                                                                          	|
 
 Topolojiyi kaba taslak aşağıdaki grafikte olduğu gibi hayal edebiliriz.
 
