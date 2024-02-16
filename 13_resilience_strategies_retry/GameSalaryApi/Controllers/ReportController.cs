@@ -8,7 +8,7 @@ namespace VideoGameSalariesApi.Controllers
     public class VideoGameSalariesController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<VideoGameSalary> Get()
+        public ActionResult<IEnumerable<VideoGameSalary>> Get()
         {
             var videoGameSalaries = new List<VideoGameSalary>
             {
@@ -24,7 +24,7 @@ namespace VideoGameSalariesApi.Controllers
                 new() { Title = "The Legend of Zelda: Breath of the Wild", Salary = 23000000m }
             };
 
-            return videoGameSalaries;
+            return Ok(videoGameSalaries);
         }
     }
 }
