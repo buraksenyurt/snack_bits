@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GameSalary.Client;
+
 public class ConsumerService
 {
     private readonly HttpClient _httpClient;
