@@ -1,11 +1,7 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace GameSalary.Client;
+﻿namespace GameSalary.Client;
 class Program
 {
-    static async Task Main(string[] args)
+    static async Task Main()
     {
         var httpClient = new HttpClient
         {

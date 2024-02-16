@@ -10,6 +10,15 @@ namespace VideoGameSalariesApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<VideoGameSalary>> Get()
         {
+            // Bomb code for simulating instability
+            Random rnd = new();
+            bool shouldFail = rnd.Next(0, 2) == 0;
+
+            if (shouldFail)
+            {
+                return StatusCode(500, "Simulated internal server error.");
+            }
+
             var videoGameSalaries = new List<VideoGameSalary>
             {
                 new() { Title = "Minecraft", Salary = 200000000m },

@@ -1,7 +1,4 @@
 using Polly;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace GameSalary.Client;
 public class ConsumerService
@@ -26,7 +23,7 @@ public class ConsumerService
 
         var response = await retryPolicy.ExecuteAsync(async () =>
         {
-            var httpResponse = await _httpClient.GetAsync("/VideoGameSalaries");
+            var httpResponse = await _httpClient.GetAsync("");
             httpResponse.EnsureSuccessStatusCode();
             return httpResponse;
         });
