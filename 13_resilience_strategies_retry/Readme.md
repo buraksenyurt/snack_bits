@@ -1,0 +1,3 @@
+# Resilience Stratejileri - Retry Mekanizması
+
+Dağıtık sistemlerde servisler ile olan iletişimin sekteye uğraması durumlarında ele alınan bazı hata yönetim stratejileri vardır. Bunları Reactive ve Proactive olmak üzere iki ana başlıkta ele alabiliriz. Reactive modelde Retry, Circuit Braker, Fallback ve Hedging teknikleri kullanılır. Proactive modelde ise Timeout ve Rate Limiter teknikleri söz konusudur. Bu 13ncü atölye ile birlikte bu teknikleri ele alacağım. İlk senaryoda Retry mekanizmasına bakacağız. Retry mekanizmasında servisin hata alması gibi bir durumda bunun geçici olabileceği, birkaç deneme daha yaparak başarılı şekilde işlemini yapacağı prensibine güvenilir.

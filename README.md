@@ -4,7 +4,8 @@ Tek başına repo olamayacak, farklı konularda ve anlık olarak karşıma çık
 
 _**Not:** 11nci proje örnekleri SOLID ilkelerini anlatmak için kullanılıyor. Öğrencilere BadSample.cs içeriği gösterilip hangi ilkenin ihlal ettiği sorulur. Proje adlarında SOLID ilke adları kullanılmadığından ellerinde bir ipucu yoktur. Örneğin MasterOfPuppets isimli proje Single Responsibility ilkesinin ihlali ile ilgili örnek kod parçası içermektedir. Diğer 11 örneklerinde de benzer yaklaşım kullanılır. Hangi prensibe hangi şarkı adının yakışacağına karar verirken ChatGPT'den yararlandım._
 
-- [ ] **12_Green_Coding_Case:** Bu örnekte kullandığı kaynaklar bakımından enerji sarfiyatı yüksek olabilecek bir senaryo ele alınmaktadır.
+- [ ] **13_resilience_strategies_retry:** Resilince stratejilerinden retry mekanizmasını Polly nuget aracını kullanarak ele alıyoruz.
+- [x] **12_Green_Coding_Case:** Bu örnekte kullandığı kaynaklar bakımından enerji sarfiyatı yüksek olabilecek bir senaryo ele alınmaktadır.
 - [x] **11_HighwayToHell:** Şirketteki eğitimlerde **SOLID** ilkelerinden **Dependency Inversion** prensibini anlatmak için kullandığım örnek proje. BadSample dosyasında ihlal, Refactored dosyasında ise ideal uygulanma biçimi yer alıyor.
 - [x] **11_Paranoid:** Şirketteki eğitimlerde **SOLID** ilkelerinden **Interface Segregation** prensibini anlatmak için kullandığım örnek proje. BadSample dosyasında ihlal, Refactored dosyasında ise ideal uygulanma biçimi yer alıyor.
 - [x] **11_FearOfTheDark:** Şirketteki eğitimlerde **SOLID** ilkelerinden **Liskov Substitution** prensibini anlatmak için kullandığım örnek proje. BadSample dosyasında ihlal, Refactored dosyasında ise ideal uygulanma biçimi yer alıyor.

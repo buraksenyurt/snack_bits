@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_SymphonyOfDestruction", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_Green_Coding_Case", "12_Green_Coding_Case\12_Green_Coding_Case.csproj", "{D26D73F7-223D-42D0-8150-D450D536A468}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13_resilience_strategies_retry", "13_resilience_strategies_retry", "{06C3D200-DC96-4E78-ACA0-4B26C4735424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalaryApi", "13_resilience_strategies_retry\GameSalaryApi\GameSalaryApi.csproj", "{97434E41-536A-4E5A-83E1-76C9A7BA8532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +145,10 @@ Global
 		{D26D73F7-223D-42D0-8150-D450D536A468}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26D73F7-223D-42D0-8150-D450D536A468}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26D73F7-223D-42D0-8150-D450D536A468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97434E41-536A-4E5A-83E1-76C9A7BA8532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97434E41-536A-4E5A-83E1-76C9A7BA8532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97434E41-536A-4E5A-83E1-76C9A7BA8532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97434E41-536A-4E5A-83E1-76C9A7BA8532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +161,7 @@ Global
 		{C7B53896-0633-4B1F-A5C8-D9302C48C6D9} = {88C01501-352E-4A12-97F1-02F6CADB9151}
 		{77C42CDA-B969-478F-9268-C44E2C0159E0} = {C7B53896-0633-4B1F-A5C8-D9302C48C6D9}
 		{AA8010EB-D207-4134-9655-7E80E0743FEE} = {E1F1C776-95A2-4AB3-8F5F-A6F13A435BE5}
+		{97434E41-536A-4E5A-83E1-76C9A7BA8532} = {06C3D200-DC96-4E78-ACA0-4B26C4735424}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9C1967A-FB45-46D2-8545-5ED53F4569A7}
