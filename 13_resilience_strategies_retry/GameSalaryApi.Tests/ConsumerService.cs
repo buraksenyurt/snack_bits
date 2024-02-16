@@ -22,12 +22,12 @@ public class ConsumerService
             .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(2),
                 (result, timeSpan, retryCount, context) =>
                 {
-                    Console.WriteLine($"Request failed with {result.Result.StatusCode}. Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
+                    Console.WriteLine($"Request failed. Waiting {timeSpan} before next retry. Retry attempt {retryCount}");
                 });
 
         var response = await retryPolicy.ExecuteAsync(async () =>
         {
-            var httpResponse = await _httpClient.GetAsync("/VideoGameSalaries");
+            var httpResponse = await _httpClient.GetAsync("");
             httpResponse.EnsureSuccessStatusCode();
             return httpResponse;
         });

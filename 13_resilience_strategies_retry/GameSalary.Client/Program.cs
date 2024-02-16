@@ -9,7 +9,7 @@ class Program
     {
         var httpClient = new HttpClient
         {
-            BaseAddress = new Uri("https://turbo-guide-x9v54pj44xcvp4p-5299.app.github.dev/")
+            BaseAddress = new Uri("http://localhost:5299/VideoGameSalaries")
         };
 
         var consumerService = new ConsumerService(httpClient);

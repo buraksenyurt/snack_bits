@@ -38,7 +38,7 @@ public class GameSalaryServiceTests
 
         var httpClient = new HttpClient(handlerMock.Object)
         {
-            BaseAddress = new Uri("http://gamersworld/api/reports/salary"),
+            BaseAddress = new Uri("http://localhost:5299/VideoGameSalaries"),
         };
 
         var service = new ConsumerService(httpClient);
