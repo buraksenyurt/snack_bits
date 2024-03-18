@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalary.Client", "13_res
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalaryApi.Tests", "13_resilience_strategies_retry\GameSalaryApi.Tests\GameSalaryApi.Tests.csproj", "{A4750E48-AE97-4EC6-AC16-82B902A753DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14_find_words_count", "14_find_words_count\14_find_words_count.csproj", "{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{A4750E48-AE97-4EC6-AC16-82B902A753DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4750E48-AE97-4EC6-AC16-82B902A753DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4750E48-AE97-4EC6-AC16-82B902A753DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
