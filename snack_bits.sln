@@ -27,49 +27,63 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLib", "03_find_swit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07_remembering_events", "07_remembering_events", "{E1F1C776-95A2-4AB3-8F5F-A6F13A435BE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "07_remembering_events\Application\Application.csproj", "{AA8010EB-D207-4134-9655-7E80E0743FEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "07_remembering_events\Application\Application.csproj", "{AA8010EB-D207-4134-9655-7E80E0743FEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_dependencies", "08_dependencies\08_dependencies.csproj", "{FF307281-F0E7-4060-9F62-7D253677477D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_dependencies", "08_dependencies\08_dependencies.csproj", "{FF307281-F0E7-4060-9F62-7D253677477D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00_common_tests", "00_common_tests\00_common_tests.csproj", "{12A7B180-0D28-40B5-A4C4-272C71F637FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00_common_tests", "00_common_tests\00_common_tests.csproj", "{12A7B180-0D28-40B5-A4C4-272C71F637FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_mocking", "09_mocking\09_mocking.csproj", "{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_mocking", "09_mocking\09_mocking.csproj", "{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_mocking_tests", "09_mocking_tests\09_mocking_tests.csproj", "{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09_mocking_tests", "09_mocking_tests\09_mocking_tests.csproj", "{2485549A-C3E4-4DD1-80EE-FA2899ED74F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming_sdk", "10_plug_in_programming_sdk\10_plug_in_programming_sdk.csproj", "{C86CAA35-C93D-45AA-BC1A-3530DD048E41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_plug_in_programming_sdk", "10_plug_in_programming_sdk\10_plug_in_programming_sdk.csproj", "{C86CAA35-C93D-45AA-BC1A-3530DD048E41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming", "10_plug_in_programming\10_plug_in_programming.csproj", "{71FC3C08-361F-4709-AE13-09B699833373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_plug_in_programming", "10_plug_in_programming\10_plug_in_programming.csproj", "{71FC3C08-361F-4709-AE13-09B699833373}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_plug_in_programming_sdk_tests", "10_plug_in_programming_sdk_tests\10_plug_in_programming_sdk_tests.csproj", "{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_plug_in_programming_sdk_tests", "10_plug_in_programming_sdk_tests\10_plug_in_programming_sdk_tests.csproj", "{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_FearOfTheDark", "11_FearOfTheDark\11_FearOfTheDark.csproj", "{D7A3ED92-048E-4789-85A2-15D58D885347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_FearOfTheDark", "11_FearOfTheDark\11_FearOfTheDark.csproj", "{D7A3ED92-048E-4789-85A2-15D58D885347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_HighwayToHell", "11_HighwayToHell\11_HighwayToHell.csproj", "{5A23BE2E-EC8D-4515-88FC-F6AAF8B8BF34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_HighwayToHell", "11_HighwayToHell\11_HighwayToHell.csproj", "{5A23BE2E-EC8D-4515-88FC-F6AAF8B8BF34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_MasterOfPuppets", "11_MasterOfPuppets\11_MasterOfPuppets.csproj", "{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_MasterOfPuppets", "11_MasterOfPuppets\11_MasterOfPuppets.csproj", "{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_Paranoid", "11_Paranoid\11_Paranoid.csproj", "{FC401561-1259-4389-96DF-1C6B05E22031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_Paranoid", "11_Paranoid\11_Paranoid.csproj", "{FC401561-1259-4389-96DF-1C6B05E22031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_SymphonyOfDestruction", "11_SymphonyOfDestruction\11_SymphonyOfDestruction.csproj", "{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_SymphonyOfDestruction", "11_SymphonyOfDestruction\11_SymphonyOfDestruction.csproj", "{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_Green_Coding_Case", "12_Green_Coding_Case\12_Green_Coding_Case.csproj", "{D26D73F7-223D-42D0-8150-D450D536A468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12_Green_Coding_Case", "12_Green_Coding_Case\12_Green_Coding_Case.csproj", "{D26D73F7-223D-42D0-8150-D450D536A468}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "13_resilience_strategies_retry", "13_resilience_strategies_retry", "{06C3D200-DC96-4E78-ACA0-4B26C4735424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalaryApi", "13_resilience_strategies_retry\GameSalaryApi\GameSalaryApi.csproj", "{97434E41-536A-4E5A-83E1-76C9A7BA8532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSalaryApi", "13_resilience_strategies_retry\GameSalaryApi\GameSalaryApi.csproj", "{97434E41-536A-4E5A-83E1-76C9A7BA8532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalary.Client", "13_resilience_strategies_retry\GameSalary.Client\GameSalary.Client.csproj", "{3A5F98C8-B9F8-44A3-8271-80EBEA6DECF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSalary.Client", "13_resilience_strategies_retry\GameSalary.Client\GameSalary.Client.csproj", "{3A5F98C8-B9F8-44A3-8271-80EBEA6DECF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSalaryApi.Tests", "13_resilience_strategies_retry\GameSalaryApi.Tests\GameSalaryApi.Tests.csproj", "{A4750E48-AE97-4EC6-AC16-82B902A753DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameSalaryApi.Tests", "13_resilience_strategies_retry\GameSalaryApi.Tests\GameSalaryApi.Tests.csproj", "{A4750E48-AE97-4EC6-AC16-82B902A753DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14_find_words_count", "14_find_words_count\14_find_words_count.csproj", "{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "14_find_words_count", "14_find_words_count\14_find_words_count.csproj", "{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "15_using_refit", "15_using_refit", "{CDF95B48-0D3D-43C1-A970-7A4CF9BC0E42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeApi", "15_using_refit\RecipeApi\RecipeApi.csproj", "{C52D5AC7-CB51-40F7-8103-969B1A9DE291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeApi", "15_using_refit\RecipeApi\RecipeApi.csproj", "{C52D5AC7-CB51-40F7-8103-969B1A9DE291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeClient", "15_using_refit\RecipeClient\RecipeClient.csproj", "{412EF2A1-99D9-4A5B-AE68-09996EC91655}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeClient", "15_using_refit\RecipeClient\RecipeClient.csproj", "{412EF2A1-99D9-4A5B-AE68-09996EC91655}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10_plug_in_dev", "10_plug_in_dev", "{DC0F70DA-8B04-4D2A-A5CD-DCFD69CA0936}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11_solid", "11_solid", "{9BFE21B6-C432-472A-B983-BA864CCA87DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09_mock", "09_mock", "{A5D5F58A-94D9-498E-B20F-1856F6A3B11D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_testing", "00_testing", "{77A411E8-CFE7-4096-B7AC-A28B7F75F1B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08_dependency_mng", "08_dependency_mng", "{D57179E8-DCEC-4226-BB4A-7ADA0F8BCE09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12_green_code", "12_green_code", "{EBECA0A9-D4BA-44EB-8B98-A4E00E0008DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "14_versus_rust", "14_versus_rust", "{DED211E3-46E5-4EED-BC27-F450FA880315}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,10 +111,6 @@ Global
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77C42CDA-B969-478F-9268-C44E2C0159E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCE4D5CA-B473-49CB-A25F-B9544A6B77CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AA8010EB-D207-4134-9655-7E80E0743FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA8010EB-D207-4134-9655-7E80E0743FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA8010EB-D207-4134-9655-7E80E0743FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,9 +203,23 @@ Global
 		{C7B53896-0633-4B1F-A5C8-D9302C48C6D9} = {88C01501-352E-4A12-97F1-02F6CADB9151}
 		{77C42CDA-B969-478F-9268-C44E2C0159E0} = {C7B53896-0633-4B1F-A5C8-D9302C48C6D9}
 		{AA8010EB-D207-4134-9655-7E80E0743FEE} = {E1F1C776-95A2-4AB3-8F5F-A6F13A435BE5}
+		{FF307281-F0E7-4060-9F62-7D253677477D} = {D57179E8-DCEC-4226-BB4A-7ADA0F8BCE09}
+		{12A7B180-0D28-40B5-A4C4-272C71F637FC} = {77A411E8-CFE7-4096-B7AC-A28B7F75F1B1}
+		{14D1A771-A2E2-4DE2-B7A7-1C6138A9E8C4} = {A5D5F58A-94D9-498E-B20F-1856F6A3B11D}
+		{2485549A-C3E4-4DD1-80EE-FA2899ED74F1} = {A5D5F58A-94D9-498E-B20F-1856F6A3B11D}
+		{C86CAA35-C93D-45AA-BC1A-3530DD048E41} = {DC0F70DA-8B04-4D2A-A5CD-DCFD69CA0936}
+		{71FC3C08-361F-4709-AE13-09B699833373} = {DC0F70DA-8B04-4D2A-A5CD-DCFD69CA0936}
+		{E0BFC2F9-96BA-4A96-9562-97DA2B656BE3} = {DC0F70DA-8B04-4D2A-A5CD-DCFD69CA0936}
+		{D7A3ED92-048E-4789-85A2-15D58D885347} = {9BFE21B6-C432-472A-B983-BA864CCA87DC}
+		{5A23BE2E-EC8D-4515-88FC-F6AAF8B8BF34} = {9BFE21B6-C432-472A-B983-BA864CCA87DC}
+		{AF1EE3FD-EE2B-4D4D-9FAA-B29CC449457A} = {9BFE21B6-C432-472A-B983-BA864CCA87DC}
+		{FC401561-1259-4389-96DF-1C6B05E22031} = {9BFE21B6-C432-472A-B983-BA864CCA87DC}
+		{BC442D6D-F43E-4AB9-B2E7-AEBAC3800001} = {9BFE21B6-C432-472A-B983-BA864CCA87DC}
+		{D26D73F7-223D-42D0-8150-D450D536A468} = {EBECA0A9-D4BA-44EB-8B98-A4E00E0008DB}
 		{97434E41-536A-4E5A-83E1-76C9A7BA8532} = {06C3D200-DC96-4E78-ACA0-4B26C4735424}
 		{3A5F98C8-B9F8-44A3-8271-80EBEA6DECF9} = {06C3D200-DC96-4E78-ACA0-4B26C4735424}
 		{A4750E48-AE97-4EC6-AC16-82B902A753DC} = {06C3D200-DC96-4E78-ACA0-4B26C4735424}
+		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21} = {DED211E3-46E5-4EED-BC27-F450FA880315}
 		{C52D5AC7-CB51-40F7-8103-969B1A9DE291} = {CDF95B48-0D3D-43C1-A970-7A4CF9BC0E42}
 		{412EF2A1-99D9-4A5B-AE68-09996EC91655} = {CDF95B48-0D3D-43C1-A970-7A4CF9BC0E42}
 	EndGlobalSection
