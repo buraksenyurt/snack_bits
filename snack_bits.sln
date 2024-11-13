@@ -85,6 +85,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "12_green_code", "12_green_c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "14_versus_rust", "14_versus_rust", "{DED211E3-46E5-4EED-BC27-F450FA880315}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "16_Specification_Pattern", "16_Specification_Pattern", "{96513259-85D2-4F23-A7EE-C698A9C60FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "16_Specification_Pattern\Application\Application.csproj", "{F96C2538-F376-4791-88B3-5E7B4560B579}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +195,10 @@ Global
 		{412EF2A1-99D9-4A5B-AE68-09996EC91655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{412EF2A1-99D9-4A5B-AE68-09996EC91655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{412EF2A1-99D9-4A5B-AE68-09996EC91655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F96C2538-F376-4791-88B3-5E7B4560B579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F96C2538-F376-4791-88B3-5E7B4560B579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F96C2538-F376-4791-88B3-5E7B4560B579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F96C2538-F376-4791-88B3-5E7B4560B579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -222,6 +230,7 @@ Global
 		{3AEFD175-D6F2-4FF1-B081-ADF4B3C3AB21} = {DED211E3-46E5-4EED-BC27-F450FA880315}
 		{C52D5AC7-CB51-40F7-8103-969B1A9DE291} = {CDF95B48-0D3D-43C1-A970-7A4CF9BC0E42}
 		{412EF2A1-99D9-4A5B-AE68-09996EC91655} = {CDF95B48-0D3D-43C1-A970-7A4CF9BC0E42}
+		{F96C2538-F376-4791-88B3-5E7B4560B579} = {96513259-85D2-4F23-A7EE-C698A9C60FB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9C1967A-FB45-46D2-8545-5ED53F4569A7}
