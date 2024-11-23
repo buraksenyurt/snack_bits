@@ -30,7 +30,10 @@ namespace Azon.Editor
                 RowCount = 3,
                 ColumnCount = 3
             };
-            var photoBox = new PictureBox(5, "pcbProfilePhoto", (5, 5));
+            var photoBox = new PictureBox(5, "pcbProfilePhoto", (5, 5))
+            {
+                ImagePath = "assets/photo.png"
+            };
             var hiddenButton = new HiddenButton(6, "hdnAmount", (0, 0))
             {
                 Value = "1000"

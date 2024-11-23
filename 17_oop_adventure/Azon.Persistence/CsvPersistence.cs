@@ -1,5 +1,6 @@
 ﻿using Azon.SDK.Components;
 using Azon.SDK.Contracts;
+using System.Reflection;
 using System.Text;
 
 namespace Azon.Persistence
@@ -11,6 +12,17 @@ namespace Azon.Persistence
 
         public string FileType => "Csv";
 
+        private static readonly Dictionary<string, Type> controlMap = new()
+        {
+            { "Button", typeof(Button) },
+            { "HiddenButton", typeof(HiddenButton) },
+            { "CheckBoxButton", typeof(CheckBoxButton) },
+            { "LinkButton", typeof(LinkButton) },
+            { "GridBox", typeof(GridBox) },
+            { "PictureBox", typeof(PictureBox) },
+            { "Label", typeof(Label) }
+        };
+
         public Control[] Load()
         {
             if (!File.Exists(FileName))
@@ -20,18 +32,30 @@ namespace Azon.Persistence
 
             var controls = new List<Control>();
             var lines = File.ReadAllLines(FileName);
+
             foreach (var line in lines)
             {
-
                 var columns = line.Split('|');
                 var controlType = columns[0];
 
-                var id = Convert.ToInt32(columns[1]);
-                var name = columns[2];
-                var position = columns[3].Split(':');
-                var xValue = Convert.ToDouble(position[0]);
-                var yValue = Convert.ToDouble(position[1]);
+                if (!controlMap.TryGetValue(controlType, out var type))
+                {
+                    //TODO@buraksenyurt Needed logging
+                    continue;
+                }
 
+                var parserMethod = type.GetMethod("From", BindingFlags.Public | BindingFlags.Static);
+                if (parserMethod == null)
+                {
+                    //TODO@buraksenyurt Needed logging
+                    continue;
+                }
+
+                var control = parserMethod.Invoke(null, [columns]);
+                if (control is Control validControl)
+                {
+                    controls.Add(validControl);
+                }
             }
 
             return [.. controls];

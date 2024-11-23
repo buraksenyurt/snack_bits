@@ -2,15 +2,11 @@
 
 namespace Azon.SDK.Components
 {
-    public class Form
+    public class Form(IPersistence persistance)
     {
-        private readonly List<Control> controls = [];
-        private readonly IPersistence _persistance;
-        public Form(IPersistence persistance)
-        {
-            _persistance = persistance;
-            controls = persistance.Load().ToList();
-        }
+        private readonly List<Control> controls = [.. persistance.Load()];
+        private readonly IPersistence _persistance = persistance;
+
         public void AddControls(params Control[] items)
         {
             controls.AddRange(items);
@@ -32,7 +28,8 @@ namespace Azon.SDK.Components
         }
         public void Save()
         {
-            var result = _persistance.Save([.. controls]);
+            _ = _persistance.Save([.. controls]);
+            //TODO@buraksenyurt If this is not works it needs to logging
         }
     }
 }
