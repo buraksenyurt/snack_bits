@@ -1,5 +1,6 @@
 ﻿using Application.Business;
 using Application.Model;
+using Application.Trace;
 
 namespace Application.Services;
 
@@ -10,6 +11,7 @@ internal class OrderService(CustomerBusiness customerBusiness, OrderBusiness ord
     private readonly ChartBusiness _chartBusiness = chartBusiness;
     private readonly PaymentBusiness _paymentBusiness = paymentBusiness;
 
+    [MethodTrace]
     internal Result CreateOrder(Order order, ShoppingCart chart)
     {
         // Utility.LogStackTrace();

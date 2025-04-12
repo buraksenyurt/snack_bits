@@ -2,6 +2,7 @@
 using Application.Model;
 using Application.Services;
 using Application.View;
+using Serilog;
 
 namespace Application;
 
@@ -14,6 +15,13 @@ internal class Program
 {
     static void Main()
     {
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+
+        Log.Information("Application started");
+
         var vanDam = new Customer
         {
             Fullname = "Jean-Claude Van Dam",
@@ -71,5 +79,7 @@ internal class Program
         ShoppingPage.Load();
         var orderResult = shoppingPage.Order(order, chart); // Bu metot çağrımının çalışma zamanındaki işleyişini izlemek istiyoruz (Call Stack Tracing)
         Console.WriteLine(orderResult.IsSuccess);
+
+        Log.CloseAndFlush();
     }
 }

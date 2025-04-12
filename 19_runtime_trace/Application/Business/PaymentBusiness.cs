@@ -1,9 +1,11 @@
 ﻿using Application.Model;
+using Application.Trace;
 
 namespace Application.Business;
 
 internal class PaymentBusiness
 {
+    [MethodTrace]
     internal Result ProcessPayment(CreditCardPayment paymentInfo, ShoppingCart chart)
     {
         Console.WriteLine("Processing payment...");
@@ -14,6 +16,7 @@ internal class PaymentBusiness
         };
     }
 
+    [MethodTrace]
     internal bool ValidatePayment(CreditCardPayment paymentInfo)
     {
         Console.WriteLine("Validating payment...");

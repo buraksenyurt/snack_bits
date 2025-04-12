@@ -10,6 +10,7 @@ internal class ShoppingPage(OrderService orderService, InvoiceService invoiceSer
     private readonly InvoiceService _invoiceService = invoiceService;
     private readonly NotificationService _noticationService = noticationService;
 
+    [MethodTrace]
     public static void Load()
     {
         Console.WriteLine("Loading shopping page...");
