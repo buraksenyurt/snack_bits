@@ -1,9 +1,11 @@
 ﻿using Application.Model;
+using Application.Trace;
 
 namespace Application.Services;
 
 internal class InvoiceService
 {
+    [MethodTrace]
     internal byte[] Create(Order order, ShoppingCart chart)
     {
         Console.WriteLine("Creating invoice...");

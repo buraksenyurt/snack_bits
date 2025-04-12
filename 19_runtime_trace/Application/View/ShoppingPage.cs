@@ -1,7 +1,6 @@
 ﻿using Application.Model;
 using Application.Services;
 using Application.Trace;
-using System.Diagnostics;
 
 namespace Application.View;
 
@@ -16,6 +15,7 @@ internal class ShoppingPage(OrderService orderService, InvoiceService invoiceSer
         Console.WriteLine("Loading shopping page...");
     }
 
+    [MethodTrace]
     public Result Order(Order order, ShoppingCart chart)
     {
         var result = _orderService.CreateOrder(order, chart);

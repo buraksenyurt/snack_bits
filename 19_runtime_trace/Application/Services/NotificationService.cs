@@ -1,9 +1,11 @@
 ﻿using Application.Model;
+using Application.Trace;
 
 namespace Application.Services;
 
 internal class NotificationService
 {
+    [MethodTrace]
     internal void Send(Customer customer, byte[] invoice)
     {
         Console.WriteLine("Sending invoice to customer...");

@@ -1,6 +1,5 @@
 ﻿using Application.Business;
 using Application.Model;
-using Application.Trace;
 
 namespace Application.Services;
 
@@ -13,7 +12,7 @@ internal class OrderService(CustomerBusiness customerBusiness, OrderBusiness ord
 
     internal Result CreateOrder(Order order, ShoppingCart chart)
     {
-        Utility.LogStackTrace();
+        // Utility.LogStackTrace();
 
         if (!_customerBusiness.ValidateCustomer(order.Customer))
         {
