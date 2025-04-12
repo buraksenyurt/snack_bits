@@ -111,6 +111,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWorld.Business", "18_te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWorld.Business.Tests", "18_testventure\GameWorld.Business.Tests\GameWorld.Business.Tests.csproj", "{A8E2937A-2D5A-4A2F-9961-D0A4355D6BB8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "19_runtime_trace", "19_runtime_trace", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "19_runtime_trace\Application\Application.csproj", "{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -241,6 +245,10 @@ Global
 		{A8E2937A-2D5A-4A2F-9961-D0A4355D6BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8E2937A-2D5A-4A2F-9961-D0A4355D6BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8E2937A-2D5A-4A2F-9961-D0A4355D6BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -278,6 +286,7 @@ Global
 		{8B251FD9-8F40-458B-AF76-C660AFA3F51F} = {A51A1131-E650-49E8-BFAA-AF0279CC0BCF}
 		{87BCCACB-F7F9-4581-8FDB-1F557897BF99} = {DD742BB5-BC5A-4AEC-BD44-84029E122438}
 		{A8E2937A-2D5A-4A2F-9961-D0A4355D6BB8} = {DD742BB5-BC5A-4AEC-BD44-84029E122438}
+		{2ADA1BAB-CEFB-4237-8E7C-4D0D345925AB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9C1967A-FB45-46D2-8545-5ED53F4569A7}
