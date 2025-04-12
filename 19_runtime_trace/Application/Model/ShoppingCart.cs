@@ -2,11 +2,21 @@
 
 internal class ShoppingCart(Customer customer)
 {
-    private Customer customer = customer;
-    private List<Product> items = [];
+    private readonly Customer _customer = customer;
+    private readonly List<Product> items = [];
 
     internal void AddItem(Product product)
     {
         items.Add(product);
+    }
+
+    internal decimal GetTotalPrice()
+    {
+        return items.Sum(item => item.ListPrice);
+    }
+
+    internal Customer GetCustomer()
+    {
+        return _customer;
     }
 }
