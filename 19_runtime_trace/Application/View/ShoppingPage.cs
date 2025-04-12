@@ -1,5 +1,7 @@
 ﻿using Application.Model;
 using Application.Services;
+using Application.Trace;
+using System.Diagnostics;
 
 namespace Application.View;
 
@@ -27,6 +29,7 @@ internal class ShoppingPage(OrderService orderService, InvoiceService invoiceSer
         {
             Console.WriteLine($"Error: {result.ErrorMessage}");
         }
+
         return result;
     }
 }
