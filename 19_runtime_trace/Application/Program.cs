@@ -1,6 +1,7 @@
 ﻿using Application.Business;
 using Application.Model;
 using Application.Services;
+using Application.Trace;
 using Application.View;
 using Serilog;
 
@@ -19,6 +20,7 @@ internal class Program
             .WriteTo.Console()
             .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
+        MethodTraceAttribute.Logger = new SerilogAdapter();
 
         Log.Information("Application started");
 

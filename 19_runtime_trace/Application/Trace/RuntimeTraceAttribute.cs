@@ -1,5 +1,4 @@
 ﻿using MethodDecorator.Fody.Interfaces;
-using Serilog;
 using System.Reflection;
 
 namespace Application.Trace;
@@ -7,23 +6,25 @@ namespace Application.Trace;
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
 public class MethodTraceAttribute : Attribute, IMethodDecorator
 {
+    public static ILogger Logger { get; set; } = new SerilogAdapter();
+
     public void Init(object instance, MethodBase method, object[] args)
     {
-        Log.Information($"[TRACE] Initializing: {method.DeclaringType.FullName}.{method.Name}");
+        Logger.Info($"[TRACE] Initializing: {method.DeclaringType.FullName}.{method.Name}");
     }
 
     public void OnEntry()
     {
-        Log.Information($"[TRACE] Entering method.");
+        Logger.Info($"[TRACE] Entering method.");
     }
 
     public void OnExit()
     {
-        Log.Information($"[TRACE] Exiting method.");
+        Logger.Info($"[TRACE] Exiting method.");
     }
 
     public void OnException(Exception exception)
     {
-        Log.Information($"[TRACE] Exception: {exception.Message}");
+        Logger.Error($"[TRACE] Exception occurred.", exception);
     }
 }
