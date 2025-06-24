@@ -2,6 +2,8 @@
 
 namespace BenchmarkApp;
 
+[MemoryDiagnoser]
+// [SimpleJob(launchCount: 1, warmupCount: 1,iterationCount:3)] // Daha minimal bir benchmark testi için bu tip ayarlar da verilebilir.
 public class Runner
 {
     private List<Game> games = [];
